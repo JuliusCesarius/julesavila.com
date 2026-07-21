@@ -1,0 +1,57 @@
+---
+import { now } from '../data/profile';
+---
+
+<section id="now" class="now">
+  <div class="container">
+    <div class="now__card reveal">
+      <p class="eyebrow">{now.eyebrow}</p>
+      <h2 class="section-heading">{now.heading}</h2>
+      <p class="now__body">
+        {now.body}
+        {' '}
+        <a href={now.href} target="_blank" rel="noopener noreferrer" class="now__link">{now.linkLabel} →</a>
+      </p>
+      <p class="now__body now__previously">
+        {now.previously.body}
+        {' '}
+        <a href={now.previously.href} target="_blank" rel="noopener noreferrer" class="now__link">
+          {now.previously.linkLabel} →
+        </a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .now__card {
+    background: var(--surface);
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-l);
+    padding: clamp(28px, 5vw, 48px);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .now__body {
+    font-size: clamp(15px, 2vw, 17px);
+    line-height: 1.75;
+    color: var(--text);
+    max-width: 70ch;
+  }
+
+  .now__previously {
+    margin-top: 16px;
+    color: var(--text-muted);
+  }
+
+  .now__link {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .now__link:hover {
+    text-decoration: underline;
+  }
+</style>

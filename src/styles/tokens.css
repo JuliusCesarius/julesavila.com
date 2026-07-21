@@ -1,0 +1,78 @@
+/*
+  Luminus Warm — design tokens.
+  Derived from the "Luminus Blue" resume design system, with the blues
+  swapped for a coral / melon / rose warmth. Two accent weights exist on
+  purpose: --coral is saturated for buttons, large type and decorative use;
+  --coral-deep is a darker step kept AA-safe (4.5:1 on white) for links and
+  small text, since the bright coral alone falls short at small sizes.
+*/
+
+:root {
+  color-scheme: light;
+
+  /* accent */
+  --coral: #e85d2f;
+  --coral-deep: #c2410c;
+  --melon: #ffa268;
+  --rose: #e8917c;
+  --mist: #fbede6;
+
+  /* neutrals (warmed) */
+  --chalk: #f7f6f2;
+  --cream: #fffbf7;
+  --warm: #ede8d8;
+  --stone: #e4dcd3;
+  --ash: #8a8079;
+  --ink: #4a4340;
+  --cocoa: #3d2b24;
+  --void: #241a15;
+
+  /* semantic */
+  --bg: var(--cream);
+  --bg-alt: var(--chalk);
+  --surface: #ffffff;
+  --text: var(--ink);
+  --text-strong: var(--cocoa);
+  --text-muted: var(--ash);
+  --accent: var(--coral-deep);
+  --accent-bright: var(--coral);
+  --accent-glow: var(--melon);
+  --border: var(--stone);
+  --border-soft: var(--mist);
+
+  /* type */
+  --font-display: 'Fraunces', ui-serif, Georgia, serif;
+  --font-body: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* rhythm */
+  --radius-s: 8px;
+  --radius-m: 14px;
+  --radius-l: 24px;
+  --space-unit: 8px;
+  --max-w: 920px;
+
+  --shadow-soft: 0 1px 2px rgba(61, 43, 36, 0.04), 0 8px 24px rgba(61, 43, 36, 0.06);
+  --shadow-lift: 0 4px 8px rgba(61, 43, 36, 0.06), 0 20px 40px rgba(232, 93, 47, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --bg: #1c130f;
+    --bg-alt: #241a15;
+    --surface: #2a1e18;
+    --text: #ecdfd6;
+    --text-strong: #fbede6;
+    --text-muted: #b3a199;
+    --accent: var(--melon);
+    --accent-bright: var(--coral);
+    --accent-glow: var(--melon);
+    --border: #3d2b24;
+    --border-soft: #3a2820;
+
+    --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.2), 0 8px 24px rgba(0, 0, 0, 0.3);
+    --shadow-lift: 0 4px 8px rgba(0, 0, 0, 0.25), 0 20px 40px rgba(255, 162, 104, 0.12);
+  }
+}

@@ -1,0 +1,171 @@
+---
+import { jobs, earlier } from '../data/profile';
+---
+
+<section id="experience" class="timeline">
+  <div class="container">
+    <p class="eyebrow reveal">Experience</p>
+    <h2 class="section-heading reveal">Two decades, one throughline: ownership</h2>
+
+    <ol class="timeline__list">
+      {
+        jobs.map((job) => (
+          <li class="timeline__item reveal">
+            <div class="timeline__dot" aria-hidden="true" />
+            <div class="timeline__content">
+              <div class="timeline__header">
+                <h3 class="timeline__title">{job.title}</h3>
+                <span class="timeline__period">{job.period}</span>
+              </div>
+              <p class="timeline__company">
+                {job.companyHref ? (
+                  <a href={job.companyHref} target="_blank" rel="noopener noreferrer">
+                    {job.company}
+                  </a>
+                ) : (
+                  job.company
+                )}
+                <span class="timeline__region"> · {job.region}</span>
+              </p>
+              <ul class="timeline__bullets">
+                {job.bullets.map((b) => (
+                  <li>{b}</li>
+                ))}
+              </ul>
+            </div>
+          </li>
+        ))
+      }
+
+      <li class="timeline__item timeline__item--earlier reveal">
+        <div class="timeline__dot timeline__dot--muted" aria-hidden="true" />
+        <div class="timeline__content">
+          <div class="timeline__header">
+            <h3 class="timeline__title">{earlier.title}</h3>
+            <span class="timeline__period">{earlier.period}</span>
+          </div>
+          <p class="timeline__company">{earlier.companies}</p>
+          <p class="timeline__earlier-body">{earlier.body}</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<style>
+  .timeline__list {
+    list-style: none;
+    margin-top: 40px;
+    position: relative;
+  }
+
+  .timeline__list::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: var(--border-soft);
+  }
+
+  .timeline__item {
+    position: relative;
+    padding-left: 32px;
+    padding-bottom: 36px;
+  }
+
+  .timeline__item:last-child {
+    padding-bottom: 0;
+  }
+
+  .timeline__dot {
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent-bright);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--melon) 30%, transparent);
+  }
+
+  .timeline__dot--muted {
+    background: var(--ash);
+    box-shadow: none;
+  }
+
+  .timeline__header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 6px 16px;
+  }
+
+  .timeline__title {
+    font-size: 18px;
+  }
+
+  .timeline__period {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  .timeline__company {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent);
+    margin-top: 4px;
+  }
+
+  .timeline__company a {
+    text-decoration: none;
+    color: var(--accent);
+  }
+
+  .timeline__company a:hover {
+    text-decoration: underline;
+  }
+
+  .timeline__region {
+    font-weight: 400;
+    color: var(--text-muted);
+  }
+
+  .timeline__bullets {
+    list-style: none;
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .timeline__bullets li {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--text);
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .timeline__bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--rose);
+  }
+
+  .timeline__item--earlier {
+    opacity: 0.85;
+  }
+
+  .timeline__earlier-body {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-top: 10px;
+    line-height: 1.6;
+  }
+</style>

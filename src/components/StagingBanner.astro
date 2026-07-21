@@ -1,0 +1,86 @@
+---
+const deployTime = __DEPLOY_TIME__;
+---
+
+<div class="staging-banner" id="staging-banner" hidden>
+  <span class="staging-banner__env" id="staging-banner-env">Preview</span>
+  <span class="staging-banner__sep">·</span>
+  <span>deployed <time id="staging-banner-time" datetime={deployTime}>{deployTime}</time></span>
+</div>
+
+<style>
+  .staging-banner {
+    position: fixed;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    background: var(--cocoa, #3d2b24);
+    color: #fff;
+    font-family: var(--font-mono, monospace);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    padding: 3px 16px 6px;
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    max-width: calc(100vw - 24px);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    transition: top 0.25s ease;
+    cursor: default;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .staging-banner:hover,
+  .staging-banner:focus-within,
+  .staging-banner.is-open {
+    top: 0;
+  }
+
+  .staging-banner__env {
+    color: var(--melon, #ffa268);
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .staging-banner {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const PROD_HOSTS = new Set(['julesavila.com', 'www.julesavila.com']);
+
+  function initStagingBanner() {
+    const banner = document.getElementById('staging-banner');
+    if (!banner) return;
+
+    const host = window.location.hostname;
+    if (PROD_HOSTS.has(host)) return;
+
+    const envEl = document.getElementById('staging-banner-env');
+    if (envEl) envEl.textContent = host.includes('vercel.app') ? 'Preview' : host;
+
+    const timeEl = document.getElementById('staging-banner-time') as HTMLTimeElement | null;
+    if (timeEl) {
+      const dt = new Date(timeEl.dateTime);
+      if (!Number.isNaN(dt.getTime())) {
+        timeEl.textContent = dt.toLocaleString(undefined, {
+          dateStyle: 'medium',
+          timeStyle: 'short',
+        });
+      }
+    }
+
+    banner.hidden = false;
+    banner.addEventListener('click', () => banner.classList.toggle('is-open'));
+  }
+
+  initStagingBanner();
+  document.addEventListener('astro:page-load', initStagingBanner);
+</script>

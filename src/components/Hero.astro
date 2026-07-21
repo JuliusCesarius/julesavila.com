@@ -1,0 +1,76 @@
+---
+import { person } from '../data/profile';
+---
+
+<section class="hero">
+  <div class="hero__glow" aria-hidden="true"></div>
+  <div class="container hero__inner">
+    <p class="eyebrow reveal">Hi, I'm</p>
+    <h1 class="hero__name reveal">{person.name}</h1>
+    <p class="hero__title reveal">{person.title}</p>
+    <p class="hero__tagline reveal">{person.tagline}</p>
+    <div class="hero__actions reveal">
+      <a class="btn btn-primary" href={`mailto:${person.email}`}>Say hello</a>
+      <a class="btn btn-ghost" href={person.links.linkedin} target="_blank" rel="noopener noreferrer">
+        LinkedIn
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(64px, 14vw, 140px) clamp(48px, 8vw, 96px);
+  }
+
+  .hero__glow {
+    position: absolute;
+    inset: -20% -10% auto -10%;
+    height: 60%;
+    background: radial-gradient(
+      60% 60% at 30% 20%,
+      color-mix(in srgb, var(--melon) 35%, transparent),
+      transparent 70%
+    );
+    filter: blur(10px);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .hero__inner {
+    max-width: 720px;
+  }
+
+  .hero__name {
+    font-size: clamp(40px, 9vw, 76px);
+    letter-spacing: -0.02em;
+    margin-top: 8px;
+  }
+
+  .hero__title {
+    font-family: var(--font-mono);
+    font-size: clamp(12px, 2vw, 14px);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-top: 14px;
+    font-weight: 500;
+  }
+
+  .hero__tagline {
+    font-size: clamp(17px, 2.4vw, 21px);
+    color: var(--text);
+    line-height: 1.6;
+    margin-top: 20px;
+    max-width: 56ch;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 32px;
+  }
+</style>

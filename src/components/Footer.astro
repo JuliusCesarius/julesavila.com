@@ -1,0 +1,71 @@
+---
+import { person } from '../data/profile';
+
+const year = new Date(__DEPLOY_TIME__).getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div>
+      <p class="footer__name">{person.name}</p>
+      <p class="footer__location">{person.location}</p>
+    </div>
+    <nav class="footer__links" aria-label="Contact">
+      <a href={`mailto:${person.email}`}>Email</a>
+      <a href={person.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href={person.links.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href={person.links.medium} target="_blank" rel="noopener noreferrer">Medium</a>
+    </nav>
+    <p class="footer__copy">© {year} {person.name}</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--border-soft);
+    background: var(--bg-alt);
+    padding-block: 40px;
+  }
+
+  .footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .footer__name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--text-strong);
+  }
+
+  .footer__location {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  .footer__links {
+    display: flex;
+    gap: 18px;
+    font-size: 13.5px;
+    font-weight: 500;
+  }
+
+  .footer__links a {
+    text-decoration: none;
+    color: var(--text);
+  }
+
+  .footer__links a:hover {
+    color: var(--accent);
+  }
+
+  .footer__copy {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--text-muted);
+  }
+</style>
