@@ -5,15 +5,24 @@ import { person } from '../data/profile';
 <section class="hero">
   <div class="hero__glow" aria-hidden="true"></div>
   <div class="container hero__inner">
-    <p class="eyebrow reveal">Hi, I'm</p>
-    <h1 class="hero__name reveal">{person.name}</h1>
-    <p class="hero__title reveal">{person.title}</p>
-    <p class="hero__tagline reveal">{person.tagline}</p>
-    <div class="hero__actions reveal">
-      <a class="btn btn-primary" href={`mailto:${person.email}`}>Say hello</a>
-      <a class="btn btn-ghost" href={person.links.linkedin} target="_blank" rel="noopener noreferrer">
-        LinkedIn
-      </a>
+    <img
+      class="hero__photo reveal"
+      src="/jules-avila.jpg"
+      alt={`Portrait of ${person.name}`}
+      width="200"
+      height="200"
+    />
+    <div class="hero__content">
+      <p class="eyebrow reveal">Hi, I'm</p>
+      <h1 class="hero__name reveal">{person.name}</h1>
+      <p class="hero__title reveal">{person.title}</p>
+      <p class="hero__tagline reveal">{person.tagline}</p>
+      <div class="hero__actions reveal">
+        <a class="btn btn-primary" href={`mailto:${person.email}`}>Say hello</a>
+        <a class="btn btn-ghost" href={person.links.linkedin} target="_blank" rel="noopener noreferrer">
+          LinkedIn
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -40,7 +49,44 @@ import { person } from '../data/profile';
   }
 
   .hero__inner {
-    max-width: 720px;
+    max-width: 840px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+  }
+
+  .hero__photo {
+    width: 104px;
+    height: 104px;
+    border-radius: 50%;
+    object-fit: cover;
+    padding: 4px;
+    background: linear-gradient(135deg, var(--accent-bright), var(--melon));
+    box-shadow: var(--shadow-lift);
+  }
+
+  .hero__content {
+    max-width: 620px;
+  }
+
+  @media (min-width: 760px) {
+    .hero__inner {
+      flex-direction: row;
+      align-items: center;
+      gap: 44px;
+    }
+
+    .hero__photo {
+      width: 168px;
+      height: 168px;
+      flex-shrink: 0;
+      order: 2;
+    }
+
+    .hero__content {
+      order: 1;
+    }
   }
 
   .hero__name {
