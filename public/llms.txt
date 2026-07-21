@@ -1,0 +1,30 @@
+# Jules Avila
+
+> Also known as Julio Avila. Operator and Founder & CEO of DashOne.ai, based in Merida, Mexico (LATAM, remote-first).
+
+Jules Avila is a founder and operator with 20+ years building, scaling, and turning around technology-driven businesses across fintech, payroll, investment platforms, and AI. He takes full ownership of a company, not a function — combining product intuition, operational rigor, technical fluency, and a founder's bias for execution over process.
+
+## Now
+
+- **DashOne.ai** (2026–present) — Cofounder & CEO Operator. A Forward Deployed Engineering boutique serving LATAM mid-market and enterprise clients. Jules owns sales, delivery, hiring, pricing, and P&L. https://dashone.ai
+- Previously: **iLuk AI** (2025–2026) — Cofounder, Chief Product Officer & Interim CTO of an AI-native regulatory compliance platform (KYC, KYB, AML automation). https://iluk.ai
+
+## Track record
+
+- Led technology and global platform programs across 10+ countries as Senior Technical Program Manager at 500 Global (2023–2025), delivering $600K+ in annual cost savings.
+- Owned the full payments product portfolio at Hola Cash, a regulated fintech (2021–2023).
+- Ran Core Product, SRE, and Internal Tools across 25+ engineers at RunaHR (2020–2021), cutting customer onboarding time 70% (6–8 weeks to 2 weeks).
+- Led a 26-member team through a full re-architecture and cloud migration of the GBMfondos investment platform at GBM, Mexico's largest brokerage (2013–2020).
+- 20+ years total, spanning full-stack development, IT management, and engineering leadership since 2006.
+
+## Pages
+
+- [Homepage](https://julesavila.com/): full profile, experience timeline, case studies, and background.
+- [Resume](https://julesavila.com/resume): printable resume and PDF download.
+
+## Contact
+
+- Email: julioavilasaavedra@gmail.com
+- LinkedIn: https://www.linkedin.com/in/jules-avila-74b72469/
+- GitHub: https://github.com/JuliusCesarius
+- Medium: https://medium.com/@smartjulius

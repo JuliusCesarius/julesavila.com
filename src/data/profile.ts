@@ -195,3 +195,30 @@ export const languages = [
   { name: 'Spanish', level: 'Native' },
   { name: 'English', level: 'C2 Proficient' },
 ];
+
+export const faqs = [
+  {
+    question: 'What does Jules Avila do?',
+    answer:
+      'Jules Avila is a founder and operator. He is currently the Cofounder & CEO of DashOne.ai, a Forward Deployed Engineering boutique serving LATAM mid-market and enterprise clients, where he owns sales, delivery, hiring, pricing, and P&L.',
+  },
+  {
+    question: 'Is Jules Avila the same person as Julio Avila?',
+    answer:
+      "Yes. Jules Avila is Julio Avila's professional operating name — the same person, the same 20+ year track record across GBM, RunaHR, Hola Cash, 500 Global, iLuk AI, and DashOne.ai.",
+  },
+  {
+    question: 'What industries has Jules Avila worked in?',
+    answer:
+      'Fintech and payments, payroll and HR tech, investment platforms, SaaS, and AI-native regulatory compliance (KYC, KYB, AML), across LATAM and US markets.',
+  },
+  {
+    question: "What is Jules Avila's background before founding companies?",
+    answer:
+      '20+ years combining hands-on software engineering with product and technical program leadership — starting as a full-stack developer in 2006, later leading engineering teams of 25-30 people at RunaHR and GBM, and running global technology programs across 10+ countries at 500 Global.',
+  },
+  {
+    question: 'How can I get in touch with Jules Avila?',
+    answer: `Email ${person.email}, or reach out on LinkedIn (${person.links.linkedin}). His resume is also downloadable at julesavila.com/resume.`,
+  },
+];

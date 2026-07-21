@@ -23,6 +23,23 @@ const {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL('/og.png', Astro.site);
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: person.name,
+  alternateName: 'Julio Avila',
+  url: String(Astro.site),
+  description: person.tagline,
+  jobTitle: 'Founder & CEO Operator',
+  worksFor: {
+    '@type': 'Organization',
+    name: 'DashOne.ai',
+    url: 'https://dashone.ai',
+  },
+  email: `mailto:${person.email}`,
+  sameAs: [person.links.linkedin, person.links.github, person.links.medium],
+};
 ---
 
 <!doctype html>
@@ -47,6 +64,8 @@ const ogImage = new URL('/og.png', Astro.site);
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
   </head>
   <body>
     <StagingBanner />

@@ -1,0 +1,65 @@
+---
+import { faqs } from '../data/profile';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: f.answer,
+    },
+  })),
+};
+---
+
+<section id="faq" class="faq">
+  <div class="container">
+    <p class="eyebrow reveal">At a glance</p>
+    <h2 class="section-heading reveal">Quick answers</h2>
+
+    <dl class="faq__list">
+      {
+        faqs.map((f) => (
+          <div class="faq__item reveal">
+            <dt class="faq__question">{f.question}</dt>
+            <dd class="faq__answer">{f.answer}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<style>
+  .faq__list {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .faq__item {
+    border-top: 1px solid var(--border-soft);
+    padding-top: 20px;
+  }
+
+  .faq__question {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-strong);
+  }
+
+  .faq__answer {
+    margin: 8px 0 0;
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: var(--text);
+    max-width: 65ch;
+  }
+</style>
