@@ -1,15 +1,18 @@
 ---
 import { person } from '../data/profile';
+
+const isHome = Astro.url.pathname === '/';
+const anchor = (id: string) => (isHome ? `#${id}` : `/#${id}`);
 ---
 
 <header class="nav">
   <div class="nav__inner container">
     <a href="/" class="nav__mark" aria-label={`${person.name} — home`}>JA</a>
     <nav class="nav__links" aria-label="Primary">
-      <a href="#now">Now</a>
-      <a href="#experience">Experience</a>
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
+      <a href={anchor('now')}>Now</a>
+      <a href={anchor('experience')}>Experience</a>
+      <a href={anchor('work')}>Work</a>
+      <a href={anchor('about')}>About</a>
       <a href="/resume" class="btn btn-ghost nav__resume">Resume</a>
     </nav>
   </div>
