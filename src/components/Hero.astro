@@ -134,6 +134,17 @@ const [taglineBefore, taglineAfter] = person.tagline.split('—');
     }
     window.addEventListener('load', layoutDashNote);
     window.addEventListener('resize', scheduleLayout);
+
+    // Safety net: the very first layout pass has, in practice, sometimes
+    // measured against a not-yet-settled layout with no later trigger to
+    // correct it. A few cheap, short-lived retries catch that case —
+    // harmless once the note is already correctly shown or hidden.
+    let retries = 0;
+    const retryTimer = setInterval(() => {
+      layoutDashNote();
+      retries += 1;
+      if (retries >= 8) clearInterval(retryTimer);
+    }, 400);
   }
 
   initDashNote();
