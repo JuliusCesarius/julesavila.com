@@ -22,19 +22,21 @@ const [taglineBefore, taglineAfter] = person.tagline.split('—');
         <p class="hero__tagline reveal">
           {taglineBefore}<span class="dash-anchor">—</span>{taglineAfter}
         </p>
-        <div class="hero__actions reveal">
-          <a class="btn btn-primary" href={`mailto:${person.email}`}>Say hello</a>
-          <a class="btn btn-ghost" href={person.links.linkedin} target="_blank" rel="noopener noreferrer">
-            LinkedIn
-          </a>
+        <div class="hero__actions-row reveal">
+          <div class="hero__actions">
+            <a class="btn btn-primary" href={`mailto:${person.email}`}>Say hello</a>
+            <a class="btn btn-ghost" href={person.links.linkedin} target="_blank" rel="noopener noreferrer">
+              LinkedIn
+            </a>
+          </div>
+
+          <p class="dash-note">
+            <span class="dash-note__text">relax — it's an em dash, not a confession.</span>
+            <span class="dash-note__secret">psst — 100% AI-written, from my extended virtual memory.</span>
+          </p>
         </div>
       </div>
     </div>
-
-    <p class="dash-note">
-      <span class="dash-note__text">relax — it's an em dash, not a confession.</span>
-      <span class="dash-note__secret">psst — 100% AI-written, from my extended virtual memory.</span>
-    </p>
   </div>
 </section>
 
@@ -124,11 +126,18 @@ const [taglineBefore, taglineAfter] = person.tagline.split('—');
     max-width: 56ch;
   }
 
+  .hero__actions-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+    margin-top: 32px;
+  }
+
   .hero__actions {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
-    margin-top: 32px;
   }
 
   .dash-anchor {
@@ -137,11 +146,17 @@ const [taglineBefore, taglineAfter] = person.tagline.split('—');
   }
 
   .dash-note {
-    margin-top: 20px;
-    max-width: 320px;
+    display: none;
+    max-width: 260px;
     color: var(--cocoa);
     opacity: 0;
     animation: dash-note-in 1.2s ease 5s forwards;
+  }
+
+  @media (min-width: 860px) {
+    .dash-note {
+      display: block;
+    }
   }
 
   @keyframes dash-note-in {
