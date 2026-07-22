@@ -18,7 +18,7 @@ const [taglineBefore, taglineAfter] = person.tagline.split('—');
       <p class="eyebrow reveal">Hi, I'm</p>
       <h1 class="hero__name reveal">{person.name}</h1>
       <p class="hero__title reveal">{person.title}</p>
-      <p class="hero__tagline reveal">
+      <p class="hero__tagline reveal" id="hero-tagline">
         {taglineBefore}<span class="dash-anchor" id="dash-anchor">—</span>{taglineAfter}
       </p>
       <div class="hero__actions reveal">
@@ -52,8 +52,10 @@ const [taglineBefore, taglineAfter] = person.tagline.split('—');
     const note = document.getElementById('dash-note');
     const svg = document.getElementById('dash-connector') as SVGSVGElement | null;
     const path = document.getElementById('dash-connector-path');
-    const photo = document.querySelector('.hero__photo');
-    if (!container || !dash || !note || !svg || !path) return;
+    const tagline = document.getElementById('hero-tagline');
+    const heroSection = document.querySelector('.hero');
+    const actions = document.querySelector('.hero__actions');
+    if (!container || !dash || !note || !svg || !path || !tagline || !heroSection || !actions) return;
 
     const hide = () => {
       note.style.display = 'none';
@@ -65,43 +67,41 @@ const [taglineBefore, taglineAfter] = person.tagline.split('—');
       return;
     }
 
-    if (!photo) {
-      hide();
-      return;
-    }
-
     const containerRect = container.getBoundingClientRect();
     const dashRect = dash.getBoundingClientRect();
-    const photoRect = photo.getBoundingClientRect();
+    const taglineRect = tagline.getBoundingClientRect();
+    const heroRect = heroSection.getBoundingClientRect();
+    const actionsRect = actions.getBoundingClientRect();
 
     const dashX = dashRect.right - containerRect.left;
     const dashY = dashRect.top + dashRect.height / 2 - containerRect.top;
-    const photoTop = photoRect.top - containerRect.top;
-    const photoLeft = photoRect.left - containerRect.left;
+    const taglineLeft = taglineRect.left - containerRect.left;
+    const actionsBottom = actionsRect.bottom - containerRect.top;
+    const maxBottom = heroRect.bottom - containerRect.top - 8;
 
-    note.style.maxWidth = '210px';
+    note.style.maxWidth = '230px';
     note.style.display = 'block';
 
     const noteWidth = note.offsetWidth;
     const noteHeight = note.offsetHeight;
 
-    if (photoTop < noteHeight + 18) {
+    if (actionsBottom + noteHeight + 16 > maxBottom) {
       hide();
       return;
     }
 
-    const noteLeft = Math.min(photoLeft, containerRect.width - noteWidth - 8);
-    const noteTop = photoTop - noteHeight - 12;
+    const noteLeft = Math.min(taglineLeft, containerRect.width - noteWidth - 8);
+    const noteTop = actionsBottom + 16;
 
     note.style.left = `${noteLeft}px`;
     note.style.top = `${noteTop}px`;
 
-    const startX = noteLeft + 14;
-    const startY = noteTop + noteHeight + 2;
+    const startX = noteLeft + 20;
+    const startY = noteTop - 2;
     const endX = dashX + 4;
     const endY = dashY;
-    const midX = (startX + endX) / 2 + 10;
-    const midY = Math.min(startY, endY) - 24;
+    const midX = (startX + endX) / 2 - 20;
+    const midY = (startY + endY) / 2;
 
     path.setAttribute('d', `M ${startX} ${startY} Q ${midX} ${midY}, ${endX} ${endY}`);
 
@@ -109,8 +109,14 @@ const [taglineBefore, taglineAfter] = person.tagline.split('—');
     svg.style.height = `${containerRect.height}px`;
     svg.setAttribute('viewBox', `0 0 ${containerRect.width} ${containerRect.height}`);
     svg.style.display = 'block';
+
+    if (revealed) {
+      note.classList.add('is-visible');
+      svg.classList.add('is-visible');
+    }
   }
 
+  let revealed = false;
   let resizeTimer: ReturnType<typeof setTimeout>;
   function scheduleLayout() {
     clearTimeout(resizeTimer);
@@ -118,15 +124,15 @@ const [taglineBefore, taglineAfter] = person.tagline.split('—');
   }
 
   function initDashNote() {
-    layoutDashNote();
-    if ('fonts' in document) {
-      (document as any).fonts.ready.then(layoutDashNote);
-    }
+    revealed = false;
+    setTimeout(() => {
+      revealed = true;
+      layoutDashNote();
+    }, 5000);
     window.addEventListener('resize', scheduleLayout);
   }
 
   initDashNote();
-  document.addEventListener('astro:page-load', initDashNote);
 </script>
 
 <style>
@@ -234,6 +240,12 @@ const [taglineBefore, taglineAfter] = person.tagline.split('—');
     color: var(--cocoa);
     pointer-events: none;
     z-index: 2;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+  }
+
+  .dash-note.is-visible {
+    opacity: 1;
   }
 
   .dash-note__text {
@@ -266,5 +278,11 @@ const [taglineBefore, taglineAfter] = person.tagline.split('—');
     pointer-events: none;
     z-index: 1;
     overflow: visible;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+  }
+
+  .dash-connector.is-visible {
+    opacity: 1;
   }
 </style>
