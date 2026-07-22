@@ -110,41 +110,29 @@ const [taglineBefore, taglineAfter] = person.tagline.split('—');
     svg.setAttribute('viewBox', `0 0 ${containerRect.width} ${containerRect.height}`);
     svg.style.display = 'block';
 
-    if (revealed) {
-      note.classList.add('is-visible');
-      svg.classList.add('is-visible');
-    }
+    // Visible immediately in the DOM/opacity sense — the actual 5s
+    // delay before anyone sees it is a CSS transition-delay (below),
+    // not a JS timer, since JS timers can be throttled indefinitely
+    // in backgrounded tabs while CSS transitions are not.
+    note.classList.add('is-visible');
+    svg.classList.add('is-visible');
   }
 
-  let revealed = false;
   let resizeTimer: ReturnType<typeof setTimeout>;
   function scheduleLayout() {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(layoutDashNote, 100);
   }
 
-  const loadTime = Date.now();
-  const REVEAL_DELAY = 5000;
-
-  function reveal() {
-    if (revealed) return;
-    if (Date.now() - loadTime < REVEAL_DELAY) return;
-    revealed = true;
-    layoutDashNote();
-    layoutDashNote();
-    window.removeEventListener('scroll', reveal);
-    window.removeEventListener('mousemove', reveal);
-    window.removeEventListener('pointerdown', reveal);
-    document.removeEventListener('visibilitychange', reveal);
-  }
-
   function initDashNote() {
-    revealed = false;
-    setTimeout(reveal, REVEAL_DELAY);
-    window.addEventListener('scroll', reveal, { passive: true });
-    window.addEventListener('mousemove', reveal, { passive: true });
-    window.addEventListener('pointerdown', reveal, { passive: true });
-    document.addEventListener('visibilitychange', reveal);
+    layoutDashNote();
+    if ('fonts' in document) {
+      const fonts = (document as any).fonts;
+      Promise.all([fonts.load('700 19px "Caveat"'), fonts.load('600 11px "Caveat"')])
+        .catch(() => {})
+        .then(layoutDashNote);
+    }
+    window.addEventListener('load', layoutDashNote);
     window.addEventListener('resize', scheduleLayout);
   }
 
@@ -257,7 +245,7 @@ const [taglineBefore, taglineAfter] = person.tagline.split('—');
     pointer-events: none;
     z-index: 2;
     opacity: 0;
-    transition: opacity 1.2s ease;
+    transition: opacity 1.2s ease 5s;
   }
 
   .dash-note.is-visible {
@@ -295,7 +283,7 @@ const [taglineBefore, taglineAfter] = person.tagline.split('—');
     z-index: 1;
     overflow: visible;
     opacity: 0;
-    transition: opacity 1.2s ease;
+    transition: opacity 1.2s ease 5s;
   }
 
   .dash-connector.is-visible {
