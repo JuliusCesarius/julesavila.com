@@ -127,7 +127,11 @@ const [taglineBefore, taglineAfter] = person.tagline.split('—');
     revealed = false;
     setTimeout(() => {
       revealed = true;
+      // Measuring twice in a row guards against a stale first read of
+      // offsetHeight/getBoundingClientRect right as this timer fires.
       layoutDashNote();
+      layoutDashNote();
+      setTimeout(layoutDashNote, 50);
     }, 5000);
     window.addEventListener('resize', scheduleLayout);
   }
