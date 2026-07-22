@@ -17,7 +17,7 @@ interface Props {
 }
 
 const {
-  title = `${person.name} — Operator · Product & Engineering Leader`,
+  title = `${person.name} — ${person.title}`,
   description = person.tagline,
 } = Astro.props;
 
@@ -31,7 +31,7 @@ const personSchema = {
   alternateName: 'Julio Avila',
   url: String(Astro.site),
   description: person.tagline,
-  jobTitle: 'Founder & CEO Operator',
+  jobTitle: 'Cofounder & Engineering Lead',
   worksFor: {
     '@type': 'Organization',
     name: 'DashOne.ai',

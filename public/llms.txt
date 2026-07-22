@@ -1,21 +1,21 @@
 # Jules Avila
 
-> Also known as Julio Avila. Operator and Founder & CEO of DashOne.ai, based in Merida, Mexico (LATAM, remote-first).
+> Also known as Julio Avila. Engineering & Product Leader — Product, Engineering, Automation, Growth. Based in Merida, Mexico (LATAM, remote-first).
 
-Jules Avila is a founder and operator with 20+ years building, scaling, and turning around technology-driven businesses across fintech, payroll, investment platforms, and AI. He takes full ownership of a company, not a function — combining product intuition, operational rigor, technical fluency, and a founder's bias for execution over process.
+Jules Avila is an engineering and product leader with 20+ years building distributed systems, leading technical teams, and turning manual process into automation and AI-native workflows. His background spans hands-on software engineering, architecture, technical program management, and product leadership across fintech, payroll, investment platforms, and AI.
 
 ## Now
 
-- **DashOne.ai** (2026–present) — Cofounder & CEO Operator. A Forward Deployed Engineering boutique serving LATAM mid-market and enterprise clients. Jules owns sales, delivery, hiring, pricing, and P&L. https://dashone.ai
-- Previously: **iLuk AI** (2025–2026) — Cofounder, Chief Product Officer & Interim CTO of an AI-native regulatory compliance platform (KYC, KYB, AML automation). https://iluk.ai
+- **DashOne.ai** (2026–present) — Cofounder & Engineering Lead. Builds AI-native automation and distributed systems for LATAM mid-market and enterprise clients, including a multi-agent AI system (Dante) that runs internal operations, communications, and content. https://dashone.ai
+- Previously: **iLuk AI** (2025–2026) — Cofounder, Chief Product Officer & Interim CTO. Defined the AI Workers architecture and agentic system design for an AI-native regulatory compliance platform (KYC, KYB, AML automation). https://iluk.ai
 
 ## Track record
 
-- Led technology and global platform programs across 10+ countries as Senior Technical Program Manager at 500 Global (2023–2025), delivering $600K+ in annual cost savings.
-- Owned the full payments product portfolio at Hola Cash, a regulated fintech (2021–2023).
-- Ran Core Product, SRE, and Internal Tools across 25+ engineers at RunaHR (2020–2021), cutting customer onboarding time 70% (6–8 weeks to 2 weeks).
-- Led a 26-member team through a full re-architecture and cloud migration of the GBMfondos investment platform at GBM, Mexico's largest brokerage (2013–2020).
-- 20+ years total, spanning full-stack development, IT management, and engineering leadership since 2006.
+- Owned Systems Operations architecture and integration across 10+ countries as Senior Technical Program Manager at 500 Global (2023–2025), delivering $600K+ in annual cost savings and moving deployments from monthly to weekly via CI/CD.
+- Defined service-oriented, domain-driven architecture and led API strategy (OpenAPI) at Hola Cash, a regulated fintech (2021–2023).
+- Led Core Product, SRE, and Internal Tools across 25+ engineers at RunaHR (2020–2021), cutting customer onboarding time 70% (6–8 weeks to 2 weeks) and consolidating 5 monitoring tools into Datadog.
+- Led a 26-member engineering team through a full re-architecture and cloud migration of the GBMfondos investment platform at GBM, Mexico's largest brokerage (2013–2020), implementing a BFF pattern and modern CI/CD.
+- 20+ years total, spanning full-stack development, distributed-systems architecture, and engineering leadership since 2006.
 
 ## Pages
 

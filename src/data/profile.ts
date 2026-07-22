@@ -1,8 +1,8 @@
 export const person = {
   name: 'Jules Avila',
-  title: 'Operator · Product & Engineering Leader',
+  title: 'Product · Engineering · Automation · Growth',
   tagline:
-    "I take full ownership of a company, not a function — I make the business sell, the product advance, the team perform, and the numbers move.",
+    'I build systems that scale, lead teams that ship, and turn manual work into automation — deep engineering roots, product thinking, and a growing focus on applied AI.',
   email: 'julioavilasaavedra@gmail.com',
   location: 'Merida, Mexico (LATAM, remote-first)',
   links: {
@@ -15,18 +15,18 @@ export const person = {
 export const now = {
   eyebrow: 'Right now',
   heading: 'Building DashOne.ai',
-  body: "I founded and run DashOne, a Forward Deployed Engineering boutique for LATAM mid-market and enterprise clients. I own sales, delivery, hiring, pricing, and P&L — and I built a multi-agent AI chief of staff (Dante) that runs ops, comms, and content with minimal human intervention.",
+  body: 'I lead engineering and product for DashOne, building AI-native automation and distributed systems for LATAM mid-market and enterprise clients — including a multi-agent AI system (Dante) that runs our own operations, communications, and content with minimal human intervention.',
   href: 'https://dashone.ai',
   linkLabel: 'dashone.ai',
   previously: {
-    body: "Before that, I co-founded iLuk AI from zero — an AI-native regulatory compliance platform specializing in KYC, KYB, and AML automation — as Chief Product Officer and interim CTO.",
+    body: 'Before that, I led product and technical architecture for iLuk AI from zero — an AI-native regulatory compliance platform automating KYC, KYB, and AML workflows — as Chief Product Officer and interim CTO.',
     href: 'https://iluk.ai',
     linkLabel: 'iluk.ai',
   },
 };
 
 export const metrics = [
-  { value: '20+', label: 'years building & scaling tech businesses' },
+  { value: '20+', label: 'years across engineering, product & AI' },
   { value: '$600K+', label: 'annual savings driven at 500 Global' },
   { value: '70%', label: 'onboarding time cut at RunaHR' },
   { value: '2x', label: 'active users grown while NPS held' },
@@ -45,15 +45,15 @@ export type Job = {
 
 export const jobs: Job[] = [
   {
-    title: 'Cofounder & CEO Operator',
+    title: 'Cofounder & Engineering Lead',
     company: 'DashOne.ai',
     companyHref: 'https://dashone.ai',
     period: '2026 — Present',
     region: 'Merida, Mexico (LATAM)',
     bullets: [
-      'Founded and operate a Forward Deployed Engineering boutique serving LATAM mid-market and enterprise clients — own sales, delivery, hiring, pricing, positioning, and P&L.',
-      'Designed the go-to-market model, fixed-scope service packages (4–12 weeks), and lead generation system (AI Readiness Assessment) from scratch.',
-      'Built and run a multi-agent AI chief of staff managing operations, communications, and content across LinkedIn, Instagram, and WhatsApp.',
+      'Architected and built a multi-agent AI system (Dante) that runs operations, communications, and content generation autonomously across LinkedIn, Instagram, and WhatsApp.',
+      'Lead delivery for AI-native automation and distributed systems engagements across LATAM mid-market and enterprise clients, from architecture through production.',
+      'Built the technical delivery model — fixed-scope engagement structure, engineering process, and lead generation system — from scratch.',
     ],
   },
   {
@@ -63,54 +63,54 @@ export const jobs: Job[] = [
     period: '2025 — 2026',
     region: 'Mexico (Remote)',
     bullets: [
-      'Co-built an AI-native regulatory compliance platform from zero: operating model, product architecture, team structure, and go-to-market, simultaneously.',
-      'Specialized in KYC, KYB, and AML automation, embedding regulatory compliance directly into AI-native workflows for financial and regulated industries.',
-      'Owned product, engineering, and business decisions end-to-end — no functional silos.',
+      'Defined the AI Workers architecture and agentic system design for an AI-native regulatory compliance platform (KYC, KYB, AML automation).',
+      'Led engineering and product design teams through weekly execution cycles, translating business requirements into technical architecture.',
+      'Focused on scalable automation, reducing manual work and improving release readiness across the platform.',
     ],
   },
   {
-    title: 'Senior Technical Program Manager — de facto COO of Programs',
+    title: 'Senior Technical Program Manager',
     company: '500 Global',
     period: '2023 — 2025',
     region: 'Silicon Valley (Remote, 10+ countries)',
     bullets: [
-      'Sole accountable leader for technology, systems, and global platform programs across a global investment firm operating in 10+ countries.',
-      'Owned Systems Operations end-to-end — Salesforce, HubSpot, and 10+ integrated platforms across CRM, legal, finance, and comms.',
-      'Delivered an automated investment lifecycle platform integrating CRM, Legal, and Finance, driving $600K+ in annual cost savings.',
-      'Cut deployment cycles from monthly to weekly and introduced OKRs that gave leadership real accountability for the first time.',
+      'Owned Systems Operations end-to-end — architecture, integration, and reliability across 10+ platforms spanning CRM, legal, finance, and communications, deployed across 10+ countries.',
+      'Delivered an automated investment lifecycle platform integrating CRM, Legal, and Finance, eliminating manual workflows and driving $600K+ in annual cost savings.',
+      'Introduced CI/CD pipelines that cut deployment cycles from monthly to weekly, and established engineering OKRs for real accountability.',
+      'Initiated a cloud-native data platform strategy to support analytics and compliance at scale.',
     ],
   },
   {
-    title: 'Senior Technical Program Manager — Payments Platform Operator',
+    title: 'Senior Technical Product Manager',
     company: 'Hola Cash',
     period: '2021 — 2023',
     region: 'Mexico City (Fintech, Regulated)',
     bullets: [
-      'Owned the full payments product portfolio — recurring payments, subscriptions, payment links, fraud dashboard, merchant portal — in a regulated environment.',
-      'Aligned Engineering, UX, Legal, Risk, Fraud, and Finance into a single delivery cadence with shared metrics.',
-      'Drove architecture decisions (SOA, DDD, OpenAPI) that improved scalability without re-platforming.',
+      'Defined and implemented service-oriented, domain-driven architecture to improve platform scalability and reliability.',
+      'Led API strategy for external partners using OpenAPI standards, and drove infrastructure modernization with the CTO.',
+      'Implemented CI/CD best practices and performance monitoring, improving deployment frequency and system resilience.',
     ],
   },
   {
-    title: 'Technical Program & Product Manager — Platform Operator',
+    title: 'Product Manager',
     company: 'RunaHR',
     period: '2020 — 2021',
     region: 'Mexico City (Payroll Platform)',
     bullets: [
-      'Ran Core Product, SRE, and Internal Tools across 25+ engineers — owned delivery, hiring, tooling, and operating efficiency.',
-      'Cut customer onboarding from 6–8 weeks to 2 weeks (70% reduction), removing the biggest friction point in the sales cycle.',
-      'Consolidated 5 monitoring tools into Datadog (25% cost cut) and introduced Amplitude analytics for data-driven decisions.',
+      'Led Core Product, SRE, and Internal Tools across 25+ engineers, owning architecture decisions, hiring, and delivery process.',
+      'Cut onboarding time 70% (6–8 weeks to 2 weeks) and optimized delivery cycle time from 2 months to ~1.3 weeks.',
+      'Migrated 5 monitoring tools into Datadog (25% cost reduction) and introduced Amplitude analytics for data-driven engineering decisions.',
     ],
   },
   {
-    title: 'Tech Lead, Scrum Master & Agile Coach — Investment Platform Rebuild',
+    title: 'Tech Lead, Scrum Master & Agile Coach',
     company: 'GBM',
     period: '2013 — 2020',
     region: "Mexico City (Mexico's largest brokerage)",
     bullets: [
-      'Led a 26-member team through a full re-architecture and cloud migration of the GBMfondos investment platform, zero tolerance for downtime.',
-      'Drove KYC, KYB, and AML compliance automation across onboarding and transaction workflows.',
-      'Grew active users and AUM post-migration while recovering NPS, coaching the team through LeSS.',
+      'Led a 26-member engineering team through a full re-architecture and cloud migration of a regulated, customer-facing investment platform, zero tolerance for downtime.',
+      'Implemented a BFF (Backend for Frontend) pattern and re-architected Application Services for scalability, maintainability, and performance.',
+      'Delivered the company\'s first cloud-native platform with modern CI/CD, coaching the team through LeSS to sustain delivery beyond direct involvement.',
     ],
   },
 ];
@@ -119,7 +119,7 @@ export const earlier = {
   title: 'Full-Stack Developer, IT Manager & Project Lead',
   companies: 'AVIS Mexico · Softtek · Evoluciona Móvil · GICSA · Smartechnology',
   period: '2006 — 2013',
-  body: 'Built and shipped scalable web platforms, booking engines, and partner web services. Led distributed engineering teams — the hands-on technical depth that underpins 20+ years of operating judgment.',
+  body: 'Built and shipped scalable web platforms, booking engines, and partner web services. Led distributed engineering teams — the hands-on technical depth that underpins 20+ years of engineering judgment.',
 };
 
 export type CaseStudy = {
@@ -161,7 +161,7 @@ export const caseStudies: CaseStudy[] = [
 ];
 
 export const philosophy = {
-  eyebrow: 'How I operate',
+  eyebrow: 'How I work',
   heading: 'A few things I hold to be true',
   quotes: [
     'Excellence is a habit, not an act — quality is everyone\'s responsibility.',
@@ -200,7 +200,7 @@ export const faqs = [
   {
     question: 'What does Jules Avila do?',
     answer:
-      'Jules Avila is a founder and operator. He is currently the Cofounder & CEO of DashOne.ai, a Forward Deployed Engineering boutique serving LATAM mid-market and enterprise clients, where he owns sales, delivery, hiring, pricing, and P&L.',
+      'Jules Avila is an engineering and product leader with 20+ years building distributed systems, leading technical teams, and embedding automation and AI into how organizations operate. He currently leads engineering and product at DashOne.ai, building AI-native automation and distributed systems for LATAM mid-market and enterprise clients.',
   },
   {
     question: 'Is Jules Avila the same person as Julio Avila?',
@@ -213,9 +213,9 @@ export const faqs = [
       'Fintech and payments, payroll and HR tech, investment platforms, SaaS, and AI-native regulatory compliance (KYC, KYB, AML), across LATAM and US markets.',
   },
   {
-    question: "What is Jules Avila's background before founding companies?",
+    question: "What is Jules Avila's engineering background?",
     answer:
-      '20+ years combining hands-on software engineering with product and technical program leadership — starting as a full-stack developer in 2006, later leading engineering teams of 25-30 people at RunaHR and GBM, and running global technology programs across 10+ countries at 500 Global.',
+      '20+ years combining hands-on software engineering with product and technical program leadership — starting as a full-stack developer in 2006, later leading distributed-systems re-architectures and engineering teams of 25-30 people at RunaHR and GBM, and running global technology programs across 10+ countries at 500 Global.',
   },
   {
     question: 'How can I get in touch with Jules Avila?',
