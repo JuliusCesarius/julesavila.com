@@ -1,5 +1,7 @@
 ---
 import { person } from '../data/profile';
+
+const [taglineBefore, taglineAfter] = person.tagline.split('—');
 ---
 
 <section class="hero">
@@ -16,7 +18,14 @@ import { person } from '../data/profile';
       <p class="eyebrow reveal">Hi, I'm</p>
       <h1 class="hero__name reveal">{person.name}</h1>
       <p class="hero__title reveal">{person.title}</p>
-      <p class="hero__tagline reveal">{person.tagline}</p>
+      <p class="hero__tagline reveal">
+        {taglineBefore}<span class="dash-anchor">—
+          <span class="dash-note">
+            <span class="dash-note__text">↙ relax — it's an em dash, not a confession.</span>
+            <span class="dash-note__secret">psst — 100% AI-written, from my extended virtual memory.</span>
+          </span>
+        </span>{taglineAfter}
+      </p>
       <div class="hero__actions reveal">
         <a class="btn btn-primary" href={`mailto:${person.email}`}>Say hello</a>
         <a class="btn btn-ghost" href={person.links.linkedin} target="_blank" rel="noopener noreferrer">
@@ -118,5 +127,51 @@ import { person } from '../data/profile';
     flex-wrap: wrap;
     gap: 12px;
     margin-top: 32px;
+  }
+
+  .dash-anchor {
+    position: relative;
+    color: var(--accent-bright);
+    font-weight: 700;
+  }
+
+  .dash-note {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-bottom: 20px;
+    transform: translateX(-10%) rotate(-3deg);
+    width: 230px;
+    color: var(--cocoa);
+    pointer-events: none;
+  }
+
+  @media (min-width: 900px) {
+    .dash-note {
+      display: block;
+    }
+  }
+
+  .dash-note__text {
+    display: block;
+    font-family: var(--font-hand);
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  .dash-note__secret {
+    display: block;
+    margin-top: 1px;
+    margin-left: 16px;
+    font-family: var(--font-hand);
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--text-muted);
+    opacity: 0.4;
+    white-space: nowrap;
   }
 </style>
