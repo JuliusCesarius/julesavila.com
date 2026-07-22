@@ -46,6 +46,20 @@ const [taglineBefore, taglineAfter] = person.tagline.split('—');
 </section>
 
 <script>
+  // In some embedded/automated browser contexts (extension content
+  // scripts, preview iframes), `window.innerWidth` / `documentElement.
+  // clientWidth` can report 0 for a while even after `load` and
+  // `fonts.ready` — on an already fully-painted, visible page. A 0 is
+  // never a real viewport width, so we treat it as "not measured yet"
+  // and retry on the next animation frame instead of concluding "narrow,
+  // hide" from a bogus reading with nothing left to correct it.
+  let viewportWidth = 0;
+  let widthRetries = 0;
+
+  function measureViewportWidth() {
+    return document.documentElement.clientWidth || window.innerWidth || 0;
+  }
+
   function layoutDashNote() {
     const container = document.getElementById('hero-inner');
     const dash = document.getElementById('dash-anchor');
@@ -62,7 +76,15 @@ const [taglineBefore, taglineAfter] = person.tagline.split('—');
       svg.style.display = 'none';
     };
 
-    if (window.innerWidth < 900) {
+    viewportWidth = measureViewportWidth();
+
+    if (viewportWidth === 0 && widthRetries < 30) {
+      widthRetries += 1;
+      requestAnimationFrame(layoutDashNote);
+      return;
+    }
+
+    if (viewportWidth < 900) {
       hide();
       return;
     }
@@ -90,17 +112,17 @@ const [taglineBefore, taglineAfter] = person.tagline.split('—');
       return;
     }
 
-    const noteLeft = Math.min(taglineLeft, containerRect.width - noteWidth - 8);
+    const noteLeft = Math.max(taglineLeft, containerRect.width - noteWidth - 8);
     const noteTop = actionsBottom + 16;
 
     note.style.left = `${noteLeft}px`;
     note.style.top = `${noteTop}px`;
 
-    const startX = noteLeft + 20;
+    const startX = noteLeft + noteWidth - 24;
     const startY = noteTop - 2;
     const endX = dashX + 4;
     const endY = dashY;
-    const midX = (startX + endX) / 2 - 20;
+    const midX = (startX + endX) / 2 + 20;
     const midY = (startY + endY) / 2;
 
     path.setAttribute('d', `M ${startX} ${startY} Q ${midX} ${midY}, ${endX} ${endY}`);
@@ -126,25 +148,29 @@ const [taglineBefore, taglineAfter] = person.tagline.split('—');
 
   function initDashNote() {
     layoutDashNote();
-    if ('fonts' in document) {
-      const fonts = (document as any).fonts;
-      Promise.all([fonts.load('700 19px "Caveat"'), fonts.load('600 11px "Caveat"')])
-        .catch(() => {})
-        .then(layoutDashNote);
-    }
     window.addEventListener('load', layoutDashNote);
-    window.addEventListener('resize', scheduleLayout);
 
-    // Safety net: the very first layout pass has, in practice, sometimes
-    // measured against a not-yet-settled layout with no later trigger to
-    // correct it. A few cheap, short-lived retries catch that case —
-    // harmless once the note is already correctly shown or hidden.
-    let retries = 0;
-    const retryTimer = setInterval(() => {
-      layoutDashNote();
-      retries += 1;
-      if (retries >= 8) clearInterval(retryTimer);
-    }, 400);
+    // The initial pass can also measure the note before its hand-drawn
+    // font (Caveat) has actually painted, under-or-over-estimating its
+    // height. `fonts.ready` is the correct, standard signal for "every
+    // font this page references has finished loading" — far more
+    // reliable than guessing specific font strings or a blind timer.
+    if ('fonts' in document) {
+      (document as any).fonts.ready.then(layoutDashNote).catch(() => {});
+    }
+
+    // Re-run on any later layout shift — a real window resize, image
+    // decode, or a late-swapping webfont. layoutDashNote() re-measures
+    // the width itself each time, so this observer only needs to trigger it.
+    if ('ResizeObserver' in window) {
+      const observer = new ResizeObserver(() => scheduleLayout());
+      observer.observe(document.documentElement);
+
+      const container = document.getElementById('hero-inner');
+      if (container) observer.observe(container);
+    } else {
+      window.addEventListener('resize', scheduleLayout);
+    }
   }
 
   initDashNote();
@@ -289,7 +315,7 @@ const [taglineBefore, taglineAfter] = person.tagline.split('—');
     position: absolute;
     top: 0;
     left: 0;
-    color: var(--cocoa);
+    color: var(--ash);
     pointer-events: none;
     z-index: 1;
     overflow: visible;
